@@ -2,6 +2,8 @@ const mysql = require("mysql2/promise");
 
 const { connectionConfig } = require("./databaseSetup");
 
+//This section is for methods that work directly with the live database.
+
 async function getCountOfRows(tableName) {
   try {
     const connection = await mysql.createConnection(connectionConfig);
