@@ -11,7 +11,7 @@ async function createTablesAndPopulateFibonacci() {
   try {
     const connection = await mysql.createConnection(connectionConfig);
 
-    // Create the database if it doesn't exist
+    // Create the database
     await connection.query(
       `CREATE DATABASE IF NOT EXISTS ${connectionConfig.database}`
     );
@@ -25,17 +25,14 @@ async function createTablesAndPopulateFibonacci() {
       )
     `);
 
-    // Create the "max_fibonacci_number" table
-    await connection.query(`
-      CREATE TABLE IF NOT EXISTS max_fibonacci_number (
-        id INT PRIMARY KEY,
-        number BIGINT NOT NULL
-      )
-    `);
+    // Possible to create  "max_fibonacci_number" table, if we want to store max table seperately
 
-    console.log(
-      'Tables "fibonacci_sequence" and "max_fibonacci_number" created or already exist.'
-    );
+    // await connection.query(`
+    //   CREATE TABLE IF NOT EXISTS max_fibonacci_number (
+    //     id INT PRIMARY KEY,
+    //     number BIGINT NOT NULL
+    //   )
+    // `);
 
     // Check if the "fibonacci_sequence" table is empty
     const [rows] = await connection.query(
@@ -50,22 +47,6 @@ async function createTablesAndPopulateFibonacci() {
       `);
       console.log(
         'The "fibonacci_sequence" table has been populated with the first two Fibonacci numbers (0 and 1).'
-      );
-    }
-
-    // Check if the "max_fibonacci_number" table is empty
-    const [maxRows] = await connection.query(
-      "SELECT COUNT(*) AS count FROM max_fibonacci_number"
-    );
-    const maxRowCount = maxRows[0].count;
-
-    // Insert the initial row if "max_fibonacci_number" table is empty
-    if (maxRowCount === 0) {
-      await connection.query(`
-        INSERT INTO max_fibonacci_number (id, number) VALUES (1, 1)
-      `);
-      console.log(
-        'The "max_fibonacci_number" table has been populated with the initial row (id: 1, number: 1).'
       );
     }
 

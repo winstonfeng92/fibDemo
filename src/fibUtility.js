@@ -1,9 +1,9 @@
-// Function that takes an array of fibonacci objects and returns n more.
+// function that takes an array of fibonacci objects and returns n more.
 function fibonacciSequence(arrayData, n) {
   const result = [...arrayData];
   const final = [];
 
-  // Perform Fibonacci sequence 'n' times, push to final array
+  // push additional n fibs to final array and return
   for (let i = arrayData.length; i < arrayData.length + n; i++) {
     const nextNumber = result[i - 1].number + result[i - 2].number;
     result.push({ id: i + 1, number: nextNumber });

@@ -23,6 +23,7 @@ async function getCountOfRows(tableName) {
   }
 }
 
+//ended up not needing this one
 async function getValueById(tableName, id) {
   try {
     const connection = await mysql.createConnection(connectionConfig);
@@ -43,6 +44,7 @@ async function getValueById(tableName, id) {
   }
 }
 
+//important for writing multiple entries to the database if fib n doesn't exist
 async function writeMultipleLines(tableName, data) {
   try {
     const connection = await mysql.createConnection(connectionConfig);
