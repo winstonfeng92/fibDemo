@@ -1,0 +1,6 @@
+POST http://localhost:3001/api/fibonacci
+Content-Type: application/json
+
+{
+  "n": 12
+}
