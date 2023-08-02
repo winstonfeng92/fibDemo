@@ -2,7 +2,7 @@ const mysql = require("mysql2/promise");
 
 const { connectionConfig } = require("./databaseSetup");
 
-//This section is for methods that work directly with the live database.
+//database utilities for interacting with the db
 
 async function getCountOfRows(tableName) {
   try {
@@ -57,7 +57,6 @@ async function writeMultipleLines(tableName, data) {
       values
     );
 
-    // Close the connection
     await connection.end();
 
     console.log(`Inserted ${data.length} rows into the ${tableName} table.`);
@@ -76,7 +75,6 @@ async function getFirstNValues(tableName, n) {
       [n]
     );
 
-    // Close the connection
     await connection.end();
 
     return rows;
