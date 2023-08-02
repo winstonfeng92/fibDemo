@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { getFirstNValues } = require("./databaseUtils");
 
+//Single post route is needed to post a desired fibonacci N, and then work with
+//db utility to create more fibs if any are needed.
+
 // Route to handle POST request to /api/fibonacci
 router.post("/", async (req, res) => {
   try {
