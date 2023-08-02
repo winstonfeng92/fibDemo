@@ -1,0 +1,17 @@
+<form (submit)="onSubmit()">
+  <div>
+    <label for="fibNumber">Enter the number of Fibonacci numbers:</label>
+  </div>
+  <div>
+    <input
+      type="number"
+      id="fibNumber"
+      name="fibNumber"
+      [(ngModel)]="n"
+      required
+    />
+  </div>
+  <div>
+    <button type="submit">Generate Fibonacci Numbers</button>
+  </div>
+</form>

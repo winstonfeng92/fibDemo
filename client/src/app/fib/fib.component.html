@@ -1,0 +1,8 @@
+<div>
+  <h1>Results</h1>
+  <button (click)="goBack()">Back</button>
+</div>
+<div *ngIf="fibNumbers$ | async as fibonacciNumbers">
+  <!-- Display the Fibonacci numbers using ngFor -->
+  <div *ngFor="let fibNumber of fibonacciNumbers">{{ fibNumber.number }} ,</div>
+</div>
