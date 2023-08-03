@@ -34,3 +34,8 @@ Cons:
 - Certain limits to using int or bigInt, might want to think about expanding the ceiling
 - (retrospectively, a single get request/endpoint would be even easier for the frontend)
   -fully deploy this online
+
+  ## Gif :) 
+
+  ![fibDemo](https://github.com/winstonfeng92/fullstackfib/assets/73449259/35dcfd71-77f1-444e-9e55-ed679b289d47)
+
