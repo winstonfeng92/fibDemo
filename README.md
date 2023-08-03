@@ -33,7 +33,8 @@ Cons:
 - Create a seperate table to store max_fib number calculated so we don't have to tax the same table too many times.
 - Certain limits to using int or bigInt, might want to think about expanding the ceiling
 - (retrospectively, a single get request/endpoint would be even easier for the frontend)
-  -fully deploy this online
+-fully deploy this online
+- Move to using a proper ORM, used the help of an LLM to help generate some basic SQL queries and database setup queries to quickly work on the project.
 
   ## Gif :) 
 
