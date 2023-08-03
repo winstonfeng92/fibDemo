@@ -1,26 +1,28 @@
 const express = require("express");
 const router = express.Router();
-const { getFirstNValues } = require("./databaseUtils");
+const { getFirstNValues, writeMultipleLines } = require("./databaseUtils");
 const { fibonacciSequence } = require("./fibUtility");
 
 //Single post route is needed to post a desired fibonacci N, and then work with
 //db utility to create more fibs if any are needed.
 
-// Route to handle POST request to /api/fibonacci
+// route to handle POST request to /api/fibonacci
 router.post("/", async (req, res) => {
   try {
-    // Get the value of n from  request body
     const { n } = req.body;
     const parsedN = parseInt(n, 10);
 
-    // Get the first n values from  "fibonacci_sequence" table
+    // db call for n values from "fibonacci_sequence" table
     const firstNValues = await getFirstNValues("fibonacci_sequence", parsedN);
     let numberArray = firstNValues.map((item) => item.number);
-    // If the first n values are not enough, we calculate more, return the n values, and write to db
+    //   if first n values are not enough,  calculate more, return the n values, and write to db
     if (firstNValues.length < n) {
       const additionalFibs = n - firstNValues.length;
       const addedFibs = fibonacciSequence(firstNValues, additionalFibs);
       const result = [...firstNValues, ...addedFibs];
+      //adding the additional lines to the fibonacci db
+      await writeMultipleLines("fibonacci_sequence", addedFibs);
+
       res.json(result);
     } else res.json(firstNValues);
   } catch (error) {
